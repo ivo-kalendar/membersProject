@@ -24,6 +24,22 @@ router.get('/api/members/:id', (req, res) => {
 	}
 })
 
+router.post('/api/members', (req, res) => {
+	const newMember = {
+		id: 4,
+		name: req.body.name,
+		email: req.body.email,
+		status: 'inactive'
+	}
+
+	if (!newMember.name || !newMember.email) {
+		res.status(400).json({ msg: 'Please include name and email.' })
+	} else {
+		members.push(newMember)
+		res.json(members)
+	}
+
+})
 
 
 module.exports = router

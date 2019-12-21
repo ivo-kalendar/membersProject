@@ -5,6 +5,8 @@ const app = express()
 const logger = require('./middleware/logger')
 
 // app.use(express.static('public'))
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 app.use(logger)
 app.use('/', require('./router'))
 
